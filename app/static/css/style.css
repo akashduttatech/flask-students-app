@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+main {
+    flex: 1; /* Take all available vertical space */
+}
+
+.hero {
+    background: linear-gradient(to right, #00b4db, #0083b0);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.navbar {
+    background-color: #007bff;
+}

@@ -1,0 +1,48 @@
+{% extends 'public/auth/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h3 class="card-title text-center mb-4">Create Account</h3>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="{{ url_for('signup') }}" method="post">
+  {{ form.hidden_tag() }}
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="fullname" name="fullname" value="{{ request.form.fullname or '' }}"
+      placeholder="Full Name" autofocus>
+    <label for="fullname">Full Name</label>
+    {% if form.fullname.errors %}
+    <span>{{ form.fullname.errors[0] }}</span>
+    {% endif %}
+  </div>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="email" name="email" value="{{ request.form.email or '' }}"
+      placeholder="Email address">
+    <label for="email">Email address</label>
+    {% if form.email.errors %}
+    <span>{{ form.email.errors[0] }}</span>
+    {% endif %}
+  </div>
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="password" name="password" value="{{ request.form.password or '' }}"
+      placeholder="Password">
+    <label for="password">Password</label>
+    {% if form.password.errors %}
+    <span>{{ form.password.errors[0] }}</span>
+    {% endif %}
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+</form>
+<p class="text-center mt-3 mb-0">
+  Already have an account? <a href="{{ url_for('signin') }}">Sign in here</a>
+</p>
+{% endblock %}
