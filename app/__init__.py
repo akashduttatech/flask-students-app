@@ -44,9 +44,13 @@ def create_app():
     # Register views
     from app.views.main_views import main_routes
     from app.views.auth_views import auth_routes
-    from app.views.students_views import students_routes
+    from app.views.student_views import student_routes
+    from app.views.class_views import class_routes
+    from app.views.section_views import section_routes
     main_routes(app)
     auth_routes(app)
-    students_routes(app)
+    student_routes(app)
+    class_routes(app)
+    section_routes(app)
 
     return app

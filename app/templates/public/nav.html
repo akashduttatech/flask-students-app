@@ -1,29 +1,37 @@
 <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand text-white" href="#">Flask</a>
-      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('students') }}">Students</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          {% if current_user %}
-          <a href="{{ url_for('signout') }}" class="btn btn-light">Signout</a>
-          {% else %}
-          <a href="{{ url_for('signin') }}" class="btn btn-light me-2">Signin</a>
-          <a href="{{ url_for('signup') }}" class="btn btn-light">Signup</a>
-          {% endif %}
-        </div>
+  <div class="container">
+    <a class="navbar-brand text-white" href="#">Flask</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Students
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+            <li><a class="dropdown-item" href="{{ url_for('students') }}">All Students</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('classes') }}">Classes</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('sections') }}">Sections</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        {% if current_user %}
+        <a href="{{ url_for('signout') }}" class="btn btn-light">Signout</a>
+        {% else %}
+        <a href="{{ url_for('signin') }}" class="btn btn-light me-2">Signin</a>
+        <a href="{{ url_for('signup') }}" class="btn btn-light">Signup</a>
+        {% endif %}
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
